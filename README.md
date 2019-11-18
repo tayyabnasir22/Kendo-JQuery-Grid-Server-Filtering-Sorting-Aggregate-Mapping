@@ -1,1 +1,1 @@
-# Kendo-JQuery-Grid-Server-Filtering-Sorting-Aggregate-Mapping
+# Kendo-JQuery-Grid-Filtering-Aggregate-Sorting-Mapping-Server (KendoGridFASMS)
