@@ -66,6 +66,7 @@ Similarly for aggregation:
 
     AggregateResult aggr= DataSourceAggregateMapHelper.AggregateExpressionBuilder(request.Aggregate);
 Where `AggregateResult` has two properties:
+
 **AggregateFields**: returns all the fields that can be used in GROUP BY clause like:
 
     projectName, projectAmount, projectFee
