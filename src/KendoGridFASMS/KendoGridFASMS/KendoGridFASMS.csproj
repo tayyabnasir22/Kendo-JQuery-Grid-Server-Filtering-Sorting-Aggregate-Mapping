@@ -41,16 +41,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="src\DataSourceAggregateMapHelper.cs" />
-    <Compile Include="src\DataSourceFilterMapHelper.cs" />
-    <Compile Include="src\DataSourceSortMapHelper.cs" />
-    <Compile Include="src\Models\Aggregate.cs" />
-    <Compile Include="src\Models\AggregateResult.cs" />
-    <Compile Include="src\Models\DataSourceRequest.cs" />
-    <Compile Include="src\Models\Filter.cs" />
-    <Compile Include="src\Models\Filters.cs" />
-    <Compile Include="src\Models\Sort.cs" />
-    <Compile Include="src\Models\SQLOperator.cs" />
+    <Compile Include="DataSourceAggregateMapHelper.cs" />
+    <Compile Include="DataSourceFilterMapHelper.cs" />
+    <Compile Include="DataSourceSortMapHelper.cs" />
+    <Compile Include="Models\Aggregate.cs" />
+    <Compile Include="Models\AggregateResult.cs" />
+    <Compile Include="Models\DataSourceRequest.cs" />
+    <Compile Include="Models\Filter.cs" />
+    <Compile Include="Models\Filters.cs" />
+    <Compile Include="Models\Sort.cs" />
+    <Compile Include="Models\SQLOperator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
