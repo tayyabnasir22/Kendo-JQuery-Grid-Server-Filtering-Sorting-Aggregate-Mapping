@@ -1,63 +1,23 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{442912D1-5489-4A69-AE59-D206000BE45F}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KendoGridFASMS</RootNamespace>
-    <AssemblyName>KendoGridFASMS</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFrameworks>
+      net40;net45;net46;netcoreapp3.0;netstandard2.0;netcoreapp2.0;netcoreapp2.1;netcoreapp2.2;netcoreapp3.0;</TargetFrameworks>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+  <PropertyGroup>
+    <PackageId>KendoGridFASMS</PackageId>
+    <PackageVersion>2.0.0</PackageVersion>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageTags>Kendo UI for jQuery Grid Server Paging Filtering Aggregation Sorting Dynamic SQL Generation</PackageTags>
+    <PackageLicenseUrl>https://github.com/tayyabnasir22/Kendo-JQuery-Grid-Server-Filtering-Sorting-Aggregate-Mapping/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/tayyabnasir22/Kendo-JQuery-Grid-Server-Filtering-Sorting-Aggregate-Mapping</PackageProjectUrl>
+    <Title>Kendo-JQuery-Grid-Server-Filtering-Sorting-Aggregate-Mapping</Title>
+    <Authors>Tayyab</Authors>
+    <PublisherName>Tayyab</PublisherName>
+    <Copyright>Copyright 2020 Tayyab</Copyright>
+    <Description>KendoGridFASM provides functionality for ASP.Net (MVC/Web API) to not only map the Data Source Request to C# DTO but also provides helper functionality that can be used to generate dynamic expressions for filtering, sorting and aggregation which again can be used to generate dynamic WHERE, ORDER BY and GROUP BY clauses to be used to query your SQL data source.</Description>
+    <PackageReleaseNotes>Added support for .NET Core and .NET Standard.</PackageReleaseNotes>
+    
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DataSourceAggregateMapHelper.cs" />
-    <Compile Include="DataSourceFilterMapHelper.cs" />
-    <Compile Include="DataSourceSortMapHelper.cs" />
-    <Compile Include="Models\Aggregate.cs" />
-    <Compile Include="Models\AggregateResult.cs" />
-    <Compile Include="Models\DataSourceRequest.cs" />
-    <Compile Include="Models\Filter.cs" />
-    <Compile Include="Models\Filters.cs" />
-    <Compile Include="Models\Sort.cs" />
-    <Compile Include="Models\SQLOperator.cs" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>
