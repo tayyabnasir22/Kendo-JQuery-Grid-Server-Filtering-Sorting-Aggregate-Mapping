@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29409.12
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KendoGridFASMS", "KendoGridFASMS\KendoGridFASMS.csproj", "{DDC616C2-23A3-46CF-96C1-EF50A5BCD074}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KendoGridFASMS", "KendoGridFASMS\KendoGridFASMS.csproj", "{DDC616C2-23A3-46CF-96C1-EF50A5BCD074}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KendoGridFASMS.Refactor", "KendoGridFASMS.Refactor\KendoGridFASMS.Refactor.csproj", "{6C6BDDC9-DCA9-480B-B941-E1A079042029}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KendoGridFASMS.Refactor.Driver", "KendoGridFASMS.Refactor.Driver\KendoGridFASMS.Refactor.Driver.csproj", "{E043AC87-0982-49A7-99D8-E0155BDC3E79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{DDC616C2-23A3-46CF-96C1-EF50A5BCD074}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDC616C2-23A3-46CF-96C1-EF50A5BCD074}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDC616C2-23A3-46CF-96C1-EF50A5BCD074}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C6BDDC9-DCA9-480B-B941-E1A079042029}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C6BDDC9-DCA9-480B-B941-E1A079042029}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C6BDDC9-DCA9-480B-B941-E1A079042029}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C6BDDC9-DCA9-480B-B941-E1A079042029}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E043AC87-0982-49A7-99D8-E0155BDC3E79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E043AC87-0982-49A7-99D8-E0155BDC3E79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E043AC87-0982-49A7-99D8-E0155BDC3E79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E043AC87-0982-49A7-99D8-E0155BDC3E79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
