@@ -22,7 +22,14 @@ namespace KendoGridFASMS.Refactor.Driver
                 Logic = request.Filter.Logic
             };
 
-            string sqlString = KendoGridFASMS.Refactor.DataSourceFilterMapHelper.RecursiveFilterExpressionBuilder(filter); 
+            string sqlString = KendoGridFASMS.Refactor.DataSourceFilterMapHelper.RecursiveFilterExpressionBuilder(filter);
+
+
+
+            DataSourceFilterMapHelper_Refactor someGrid = new DataSourceFilterMapHelper_Refactor(); 
+            string refactorString = someGrid.RecursiveFilterExpressionBuilder(filter); 
+
+
 
             System.Console.WriteLine();
             System.Console.ReadKey(); 

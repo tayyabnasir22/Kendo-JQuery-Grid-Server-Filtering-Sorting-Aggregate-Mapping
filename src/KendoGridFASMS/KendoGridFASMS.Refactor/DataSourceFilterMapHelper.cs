@@ -6,11 +6,151 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+#region Notes
+// Why is DataSourceFilterMapHelper static? This means I'll only be able
+// to have a single DataSourceFilterMapHelper per Service Layer class. 
+//
+// 
+//
+// 
+//
+//
+//
+//
+//
+//
+//
+#endregion
+
+#region Changes
+// 1. Allowing for class to be "newed up" / making class non static
+//
+//
+//
+//
+//
+//
+#endregion
+
+
 namespace KendoGridFASMS.Refactor
 {
+    public class DataSourceFilterMapHelper_Refactor
+    {
+        public string RecursiveFilterExpressionBuilder(Filter filter)
+        {
+            if (string.IsNullOrEmpty(filter.Logic)) {
+                return "( " + MapToExpression(filter.field, filter.Value, filter.Operator) + ")";
+            }
+            else {
+                int count = 0;
+                string expression = "";
+
+                foreach (Filter temp in filter.filters) {
+
+                    if (count == 0) {
+                        expression = RecursiveFilterExpressionBuilder(temp);
+                    }
+                    else {
+                        expression = expression + " " + filter.Logic + " " + RecursiveFilterExpressionBuilder(temp);
+                    }
+
+                    count++;
+                }
+                
+                return "(" + expression + ")";
+            }
+        }
+
+        public void AddColumnTypeMapping(string _fieldName, FieldType _fieldType)
+        {
+            //this is being exposed to the clinet, this needs to be able to capture the 
+            //name of the column in the database 
+
+            //and the data type to correctly format the information
+            ColumnTypeMapping.Add(_fieldName, _fieldType);
+        }
+
+        #region Private Methods 
+
+        private static Dictionary<string, SQLOperator> OperatorsMapping { get; set; }
+
+        private static Dictionary<string, FieldType> ColumnTypeMapping { get; set; }
+
+        static DataSourceFilterMapHelper_Refactor()
+        {
+            //1. Initiate Mappings for Operator Expressions
+            OperatorsMapping = new Dictionary<string, SQLOperator>();
+            OperatorsMapping.Add("eq", new SQLOperator("{0} = {1}", OperatorType.General));
+            OperatorsMapping.Add("neq", new SQLOperator("{0} <> {1}", OperatorType.General));
+            OperatorsMapping.Add("gte", new SQLOperator("{0} >= {1}", OperatorType.General));
+            OperatorsMapping.Add("gt", new SQLOperator("{0} > {1}", OperatorType.General));
+            OperatorsMapping.Add("lte", new SQLOperator("{0} <= {1}", OperatorType.General));
+            OperatorsMapping.Add("lt", new SQLOperator("{0} < {1}", OperatorType.General));
+            OperatorsMapping.Add("startswith", new SQLOperator("{0} like \'{1}%\'", OperatorType.Character));
+            OperatorsMapping.Add("contains", new SQLOperator("{0} like \'%{1}%\'", OperatorType.Character));
+            OperatorsMapping.Add("doesnotcontain", new SQLOperator("{0} not like \'%{1}%\'", OperatorType.Character));
+            OperatorsMapping.Add("endswith", new SQLOperator("{0} like \'%{1}\'", OperatorType.Character));
+            OperatorsMapping.Add("isempty", new SQLOperator("datalength({0}) = 0", OperatorType.General));
+            OperatorsMapping.Add("isnotempty", new SQLOperator("datalength({0}) <> 0", OperatorType.General));
+            OperatorsMapping.Add("isnull", new SQLOperator("{0} is null", OperatorType.General));
+            OperatorsMapping.Add("isnotnull", new SQLOperator("{0} is not null", OperatorType.General));
+
+
+            //2. Initiate Mappings for Field types
+            ColumnTypeMapping = new Dictionary<string, FieldType>();
+        }
+
+        private string FormatForTypeType(SQLOperator _sqlOperator, string _field, string _value, FieldType _type)
+        {
+            //1. For character type operator no need to differentiate between field type
+            if (_sqlOperator.Type == OperatorType.Character)
+            {
+                return string.Format(_sqlOperator.SQLExpression, _field, _value);
+            }
+            //2. For general type we can accept any type for field so parse check
+            else
+            {
+                return (_type == FieldType.@string || _type == FieldType.date) ? string.Format(_sqlOperator.SQLExpression, _field, "\'" + _value + "\'") : string.Format(_sqlOperator.SQLExpression, _field, _value);
+            }
+        }
+
+        private string MapToExpression(string _field, string _value, string _operator)
+        {
+            //1. Get the operator Mapping
+            SQLOperator _sqlOperator = null;
+            OperatorsMapping.TryGetValue(_operator, out _sqlOperator);
+
+            //2 Get type mapping
+            FieldType _type;
+            ColumnTypeMapping.TryGetValue(_field, out _type);
+
+            //3. Append value to string
+            return FormatForTypeType(_sqlOperator, _field, _value, _type);
+        }
+        #endregion
+
+    }//end refactor class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public static class DataSourceFilterMapHelper
     {
         private static Dictionary<string, SQLOperator> OperatorsMapping { get; set; }
+
         private static Dictionary<string, FieldType> ColumnTypeMapping { get; set; }
 
         static DataSourceFilterMapHelper()
