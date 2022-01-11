@@ -62,12 +62,23 @@ namespace KendoGridFASMS.Refactor
             }
         }
 
+
         public void AddColumnTypeMapping(string _fieldName, FieldType _fieldType)
         {
             //this is being exposed to the clinet, this needs to be able to capture the 
             //name of the column in the database 
 
             //and the data type to correctly format the information
+            //I propose a new dto type object to be introduce: 
+
+            //fieldName = this is going to be the name of the piece of data being shown in the kendo grid
+            //columnName = this is going to be the name of the column for our sql query
+            //the ui / client will have the name of the field coming from the kendo grid and 
+            //name can / should be different than whatever we have in the query
+
+            //FieldType = so we know the datatype of what is being displayed on the ui
+            //
+
             ColumnTypeMapping.Add(_fieldName, _fieldType);
         }
 
