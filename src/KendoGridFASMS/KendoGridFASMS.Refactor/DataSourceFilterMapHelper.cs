@@ -63,6 +63,9 @@ namespace KendoGridFASMS.Refactor
         }
 
 
+
+        
+        //I'm doing too much, I'm just going to add a new object with database column name and this fieldtype var 
         public void AddColumnTypeMapping(string _fieldName, FieldType _fieldType)
         {
             //this is being exposed to the clinet, this needs to be able to capture the 
@@ -79,15 +82,28 @@ namespace KendoGridFASMS.Refactor
             //FieldType = so we know the datatype of what is being displayed on the ui
             //
 
+
+            //uiField
+            //dbField
+            //fieldType
+
+            //builder pattern?
             ColumnTypeMapping.Add(_fieldName, _fieldType);
         }
 
         #region Private Methods 
 
+
+
+        //this can also be left alone
         private static Dictionary<string, SQLOperator> OperatorsMapping { get; set; }
 
+        //this will be changing to use an instance member
         private static Dictionary<string, FieldType> ColumnTypeMapping { get; set; }
 
+
+
+        //I thinkI can salvage this
         static DataSourceFilterMapHelper_Refactor()
         {
             //1. Initiate Mappings for Operator Expressions
@@ -112,6 +128,9 @@ namespace KendoGridFASMS.Refactor
             ColumnTypeMapping = new Dictionary<string, FieldType>();
         }
 
+
+
+
         private string FormatForTypeType(SQLOperator _sqlOperator, string _field, string _value, FieldType _type)
         {
             //1. For character type operator no need to differentiate between field type
@@ -122,10 +141,15 @@ namespace KendoGridFASMS.Refactor
             //2. For general type we can accept any type for field so parse check
             else
             {
+                //Why so many ternary operators ? 
                 return (_type == FieldType.@string || _type == FieldType.date) ? string.Format(_sqlOperator.SQLExpression, _field, "\'" + _value + "\'") : string.Format(_sqlOperator.SQLExpression, _field, _value);
             }
         }
 
+
+
+
+        //this method will do the translating from ui column to database column
         private string MapToExpression(string _field, string _value, string _operator)
         {
             //1. Get the operator Mapping
@@ -145,6 +169,8 @@ namespace KendoGridFASMS.Refactor
 
 
 
+
+    
 
 
 
