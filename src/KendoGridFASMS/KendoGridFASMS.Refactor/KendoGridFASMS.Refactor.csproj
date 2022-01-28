@@ -46,6 +46,7 @@
     <Compile Include="DataSourceSortMapHelper.cs" />
     <Compile Include="Models\Aggregate.cs" />
     <Compile Include="Models\AggregateResult.cs" />
+    <Compile Include="Models\ColumnMapping.cs" />
     <Compile Include="Models\DataSourceRequest.cs" />
     <Compile Include="Models\Filter.cs" />
     <Compile Include="Models\Filters.cs" />
