@@ -22,7 +22,7 @@ namespace KendoGridFASMS.Refactor.Driver
                 Logic = request.Filter.Logic
             };
 
-            DataSourceFilterMapHelper.AddColumnMapping("Id",new ColumnMapping()
+            DataSourceFilterMapHelper.AddColumnMapping("Id", new ColumnMapping()
             {
                 DatabaseColumnName = "DatabaseIdColumn", 
                 Type = FieldType.number
