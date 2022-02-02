@@ -1,4 +1,5 @@
-﻿using KendoGridParameterParser.Models;
+﻿using KendoGridFASMS.Models;
+using KendoGridParameterParser.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -11,7 +12,8 @@ namespace KendoGridParameterParser
     public static class DataSourceFilterMapHelper
     {
         private static Dictionary<string, SQLOperator> OperatorsMapping { get; set; }
-        private static Dictionary<string, FieldType> ColumnTypeMapping { get; set; }
+
+        private static Dictionary<string, ColumnMapping> ColumnMapping { get; set; }
 
         static DataSourceFilterMapHelper()
         {
@@ -34,7 +36,17 @@ namespace KendoGridParameterParser
 
 
             //2. Initiate Mappings for Field types
-            ColumnTypeMapping = new Dictionary<string, FieldType>();
+            ColumnMapping = new Dictionary<string, ColumnMapping>();
+        }
+
+        /// <summary>
+        /// Add a field to be filtered with its SQL name and query column mapping
+        /// </summary>
+        /// <param name="_fieldName"></param>
+        /// <param name="_mapping"></param>
+        public static void AddColumnMapping(string _fieldName, ColumnMapping _mapping)
+        {
+            ColumnMapping.Add(_fieldName, _mapping);
         }
 
         /// <summary>
@@ -42,20 +54,24 @@ namespace KendoGridParameterParser
         /// </summary>
         /// <param name="_fieldName"></param>
         /// <param name="_fieldType"></param>
-        public static void AddColumnTypeMapping(string _fieldName, FieldType _fieldType)
+        public static void AddColumnMapping(string _fieldName, FieldType _fieldType)
         {
-            ColumnTypeMapping.Add(_fieldName, _fieldType);
+            ColumnMapping.Add(_fieldName, new ColumnMapping()
+            {
+                Type = _fieldType,
+                QueryColumnName = _fieldName
+            });
         }
 
         /// <summary>
         /// Remove an added field
         /// </summary>
         /// <param name="_fieldName"></param>
-        public static void RemvoeColumnTypeMapping(string _fieldName)
+        public static void RemoveColumnTypeMapping(string _fieldName)
         {
-            ColumnTypeMapping.Remove(_fieldName);
+            ColumnMapping.Remove(_fieldName);
         }
-        
+
         /// <summary>
         /// Format Expression based on the Field Type
         /// </summary>
@@ -64,17 +80,17 @@ namespace KendoGridParameterParser
         /// <param name="_value"></param>
         /// <param name="_type"></param>
         /// <returns></returns>
-        private static string FormatForTypeType(SQLOperator _sqlOperator, string _field, string _value, FieldType _type)
+        private static string FormatForTypeType(SQLOperator _sqlOperator, string _field, string _value, ColumnMapping _mapping)
         {
             //1. For character type operator no need to differentiate between field type
             if (_sqlOperator.Type == OperatorType.Character)
             {
-                return string.Format(_sqlOperator.SQLExpression, _field, _value);
+                return string.Format(_sqlOperator.SQLExpression, _mapping.QueryColumnName, _value);
             }
             //2. For general type we can accept any type for field so parse check
             else
             {
-                return (_type == FieldType.@string || _type == FieldType.date) ? string.Format(_sqlOperator.SQLExpression, _field, "\'" + _value + "\'") : string.Format(_sqlOperator.SQLExpression, _field, _value);
+                return (_mapping.Type == FieldType.@string || _mapping.Type == FieldType.date) ? string.Format(_sqlOperator.SQLExpression, _mapping.QueryColumnName, "\'" + _value + "\'") : string.Format(_sqlOperator.SQLExpression, _mapping.QueryColumnName, _value);
             }
         }
 
@@ -91,12 +107,12 @@ namespace KendoGridParameterParser
             SQLOperator _sqlOperator = null;
             OperatorsMapping.TryGetValue(_operator, out _sqlOperator);
 
-            //2 Get type mapping
-            FieldType _type;
-            ColumnTypeMapping.TryGetValue(_field, out _type);
-            
+            //2 Get column mapping
+            ColumnMapping _mapping;
+            ColumnMapping.TryGetValue(_field, out _mapping);
+
             //3. Append value to string
-            return FormatForTypeType(_sqlOperator, _field, _value, _type);
+            return FormatForTypeType(_sqlOperator, _field, _value, _mapping);
         }
 
         /// <summary>
