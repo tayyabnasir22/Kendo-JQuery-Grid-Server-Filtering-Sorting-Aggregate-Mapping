@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29409.12
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KendoGridFASMS", "KendoGridFASMS\KendoGridFASMS.csproj", "{DDC616C2-23A3-46CF-96C1-EF50A5BCD074}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KendoGridFASMS", "KendoGridFASMS\KendoGridFASMS.csproj", "{DDC616C2-23A3-46CF-96C1-EF50A5BCD074}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
