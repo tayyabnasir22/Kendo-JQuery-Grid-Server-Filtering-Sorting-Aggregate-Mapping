@@ -28,11 +28,14 @@ namespace KendoGridFASMS.Refactor.Driver
                 Type = FieldType.number
             });
 
-            DataSourceFilterMapHelper.AddColumnMapping("FirstName", new ColumnMapping()
-            {
-                DatabaseColumnName = "DatabaseFirstName",
-                Type = FieldType.@string
-            });
+            //DataSourceFilterMapHelper.AddColumnMapping("FirstName", new ColumnMapping()
+            //{
+            //    DatabaseColumnName = "DatabaseFirstName",
+            //    Type = FieldType.@string
+            //});
+
+            //testing my adapter code to ensure old functionality still works 
+            DataSourceFilterMapHelper.AddColumnMapping("FirstName", FieldType.@string); 
 
             string sqlString = DataSourceFilterMapHelper.RecursiveFilterExpressionBuilder(filter);
 

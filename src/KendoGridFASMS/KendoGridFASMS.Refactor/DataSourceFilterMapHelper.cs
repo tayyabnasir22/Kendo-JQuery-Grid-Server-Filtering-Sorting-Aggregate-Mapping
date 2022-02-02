@@ -39,13 +39,27 @@ namespace KendoGridFASMS.Refactor
         }
 
         /// <summary>
+        /// Add a field to be filtered with its SQL name and query column mapping
+        /// </summary>
+        /// <param name="_fieldName"></param>
+        /// <param name="_mapping"></param>
+        public static void AddColumnMapping(string _fieldName, ColumnMapping _mapping)
+        {
+            ColumnMapping.Add(_fieldName, _mapping);
+        }
+
+        /// <summary>
         /// Add a field to be filtered with its SQL name and type
         /// </summary>
         /// <param name="_fieldName"></param>
         /// <param name="_fieldType"></param>
-        public static void AddColumnMapping(string _fieldName, ColumnMapping _mapping)
+        public static void AddColumnMapping(string _fieldName, FieldType _fieldType)
         {
-            ColumnMapping.Add(_fieldName, _mapping);
+            ColumnMapping.Add(_fieldName, new ColumnMapping()
+            {
+                Type = _fieldType,
+                DatabaseColumnName = _fieldName
+            });
         }
 
         /// <summary>
