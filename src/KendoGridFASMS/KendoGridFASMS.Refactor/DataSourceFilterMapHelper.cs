@@ -58,7 +58,7 @@ namespace KendoGridFASMS.Refactor
             ColumnMapping.Add(_fieldName, new ColumnMapping()
             {
                 Type = _fieldType,
-                DatabaseColumnName = _fieldName
+                QueryColumnName = _fieldName
             });
         }
 
@@ -84,12 +84,12 @@ namespace KendoGridFASMS.Refactor
             //1. For character type operator no need to differentiate between field type
             if (_sqlOperator.Type == OperatorType.Character)
             {
-                return string.Format(_sqlOperator.SQLExpression, _mapping.DatabaseColumnName, _value);
+                return string.Format(_sqlOperator.SQLExpression, _mapping.QueryColumnName , _value);
             }
             //2. For general type we can accept any type for field so parse check
             else
             {
-                return (_mapping.Type == FieldType.@string || _mapping.Type == FieldType.date) ? string.Format(_sqlOperator.SQLExpression, _mapping.DatabaseColumnName, "\'" + _value + "\'") : string.Format(_sqlOperator.SQLExpression, _mapping.DatabaseColumnName, _value);
+                return (_mapping.Type == FieldType.@string || _mapping.Type == FieldType.date) ? string.Format(_sqlOperator.SQLExpression, _mapping.QueryColumnName , "\'" + _value + "\'") : string.Format(_sqlOperator.SQLExpression, _mapping.QueryColumnName , _value);
             }
         }
 

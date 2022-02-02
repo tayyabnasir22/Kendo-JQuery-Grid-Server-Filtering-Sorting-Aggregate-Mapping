@@ -24,13 +24,13 @@ namespace KendoGridFASMS.Refactor.Driver
 
             DataSourceFilterMapHelper.AddColumnMapping("Id", new ColumnMapping()
             {
-                DatabaseColumnName = "DatabaseIdColumn", 
+                QueryColumnName = "DatabaseIdColumn", 
                 Type = FieldType.number
             });
 
             //DataSourceFilterMapHelper.AddColumnMapping("FirstName", new ColumnMapping()
             //{
-            //    DatabaseColumnName = "DatabaseFirstName",
+            //    QueryColumnName = "DatabaseFirstName",
             //    Type = FieldType.@string
             //});
 
