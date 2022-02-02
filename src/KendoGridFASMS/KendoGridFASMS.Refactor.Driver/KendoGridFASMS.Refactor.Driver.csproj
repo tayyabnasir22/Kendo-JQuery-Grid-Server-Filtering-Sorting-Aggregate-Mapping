@@ -53,11 +53,5 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\KendoGridFASMS.Refactor\KendoGridFASMS.Refactor.csproj">
-      <Project>{6c6bddc9-dca9-480b-b941-e1a079042029}</Project>
-      <Name>KendoGridFASMS.Refactor</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
