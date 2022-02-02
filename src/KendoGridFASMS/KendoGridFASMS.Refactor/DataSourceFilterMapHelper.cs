@@ -75,11 +75,10 @@ namespace KendoGridFASMS.Refactor
         /// Format Expression based on the Field Type
         /// </summary>
         /// <param name="_sqlOperator"></param>
-        /// <param name="_field"></param>
         /// <param name="_value"></param>
-        /// <param name="_type"></param>
+        /// <param name="_mapping"></param>
         /// <returns></returns>
-        private static string FormatForTypeType(SQLOperator _sqlOperator, string _field, string _value, ColumnMapping _mapping)
+        private static string FormatForTypeType(SQLOperator _sqlOperator, string _value, ColumnMapping _mapping)
         {
             //1. For character type operator no need to differentiate between field type
             if (_sqlOperator.Type == OperatorType.Character)
@@ -111,7 +110,7 @@ namespace KendoGridFASMS.Refactor
             ColumnMapping.TryGetValue(_field, out _mapping);
 
             //3. Append value to string
-            return FormatForTypeType(_sqlOperator, _field, _value, _mapping);
+            return FormatForTypeType(_sqlOperator, _value, _mapping);
         }
 
         /// <summary>
